@@ -42,7 +42,8 @@ minecraft {
 dependencies {
 
 	//craftdev-core
-	compile files(project.core_location)
+	//not needed!
+	//compile files(project.core_location)
 
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
