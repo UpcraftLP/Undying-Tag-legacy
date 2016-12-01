@@ -43,7 +43,7 @@ public class ItemUndyingTag extends ItemNameTag {
 		if(super.itemInteractionForEntity(stack, playerIn, target, hand)) {
 			target.getEntityData().setByte(Main.KEY_UNDYING, (byte) 1);
 			BlockPos spawnPos = playerIn.getBedLocation(playerIn.dimension);
-			if(stack.hasTagCompound()) {
+			if(stack.getTagCompound() != null) {
 				NBTTagCompound stackNBT = stack.getTagCompound();
 				if(stackNBT.hasKey(Main.KEY_SPAWN)) spawnPos = NBTUtil.getPosFromTag((NBTTagCompound) stackNBT.getTag(Main.KEY_SPAWN));
 			}
@@ -66,6 +66,7 @@ public class ItemUndyingTag extends ItemNameTag {
 			BlockPos pos = playerIn.getPosition();
 			NBTTagCompound nbtPos = NBTUtil.createPosTag(pos);
 			nbt.setTag(Main.KEY_SPAWN, nbtPos);
+			stack.setTagCompound(nbt);
 			playerIn.setHeldItem(handIn, stack);
 			playerIn.sendMessage(new TextComponentString("Spawn location set to " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + "."));
 			worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 1.0f, 0.7f);
