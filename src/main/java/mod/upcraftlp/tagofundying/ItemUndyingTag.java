@@ -35,7 +35,14 @@ public class ItemUndyingTag extends ItemNameTag {
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
 		tooltip.add("apply to any NPC to prevent it from despawning");
-		tooltip.add(TextFormatting.RED + "Must be renamed in an anvil!");
+		if(!stack.hasDisplayName()) tooltip.add(TextFormatting.RED + "Must be renamed in an anvil!");
+		if(stack.hasTagCompound()) {
+			NBTTagCompound nbt = stack.getTagCompound();
+			if(nbt.hasKey(Main.KEY_SPAWN)) {
+				BlockPos pos = NBTUtil.getPosFromTag((NBTTagCompound) nbt.getTag(Main.KEY_SPAWN));
+				tooltip.add("Spawn position at: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + ".");
+			}
+		}
 	}
 	
 	@Override

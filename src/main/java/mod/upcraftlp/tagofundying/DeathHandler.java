@@ -46,7 +46,6 @@ public class DeathHandler {
 			EntityLiving entity = (EntityLiving) event.getEntityLiving();
 			NBTTagCompound nbt = entity.getEntityData();
 			if(nbt.getByte(Main.KEY_UNDYING) == (byte) 1) {
-				event.getDrops().clear();
 				event.setCanceled(true);
 			}
 		}
