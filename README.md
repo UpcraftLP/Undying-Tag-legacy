@@ -5,3 +5,5 @@
 (c) 2016-2018 UpcraftLP
 
 #### for Developers: [![](https://jitpack.io/v/UpcraftLP/Undying-Tag.svg)](https://jitpack.io/#UpcraftLP/Undying-Tag)
+
+This Repository is no longer being maintained, you can find the new version of the mod [here](https://github.com/UpcraftLP/Undying-Tag "UpcraftLP/Undying-Tag").
